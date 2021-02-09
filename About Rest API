@@ -1,0 +1,222 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    *{
+  box-sizing:border-box;
+}
+body{
+  background:#8338EA;
+}
+span{
+  font-weight:bold;
+  font-size:17px;
+}
+p,h5, li{
+  font-size:20px;
+}
+  #navbar{
+  background: #E3E622;
+  margin: 0px 20px 0px 0px;
+  padding:20px;
+   width:350px;
+  text-align:center;
+   position:fixed;
+    height:100%;
+   top:0px;
+}
+#navbar header{
+  box-shadow:5px 7px 10px 5px rgba(201, 175, 0, 0.75);
+}
+.intro{
+  margin-left:350px;
+}
+h1{
+  text-align:center;
+  font-size:60px;
+  font-family: 'Abril Fatface', cursive;
+}
+ header{
+  font-size:30px;
+  padding:15px 20px ;
+  box-shadow:1px 2px 10px;
+}
+.nav-linked{
+  display:block;
+  text-decoration:none;
+  padding:20px;
+   font-size:25px;
+  color:yellow;
+}
+.nav-link{
+  display:block;
+  text-decoration:none;
+  padding:20px;
+   font-size:20px;
+  justify-content:center;
+  color:black;
+}
+ #navbar a:hover{
+  background:#ECFD12;
+   box-shadow:5px 7px 10px 0px rgba(201, 175, 0, 0.75);
+}
+#main-doc{
+  margin-left:350px;
+}
+.main-section{
+  background:#5933AA;
+  color:white;
+  padding:30px;
+  margin:30px;
+  box-shadow:2px 3px 10px 0px black;
+}
+pre{
+  background-color: #D4D4D4;
+  color:black;
+  padding:20px;
+}
+code{
+  color:crimson;
+}
+@media only screen and (max-width:600px){
+  #navbar{
+    width:100%;
+    margin:auto;
+    height:auto;
+    position:fixed;
+    z-index:1;
+  }
+  #navbar a{
+    padding:0;
+    margin:0;
+  }
+  #main-doc{
+    margin:auto;
+    width:100%;
+    position:absolute;
+    top:15em;
+  }
+  #navbar a:hover{
+    cursor:pointer;
+    color:darkred;
+    background:#E3E622;
+  }
+}
+    </style>
+  </head>
+  <body><section class="main-doc intro">
+    <h1>PYTHON API</h1></section>
+      <nav id="navbar">
+        <header><strong>Table of Contents</strong></header><hr>
+        <a href="#REST_API" class="nav-link">REST API</a>
+         <a href="#Constraints" class="nav-link">Constraints</a>
+         <a href="#Types_of_Requests" class="nav-link">Types of Requests</a>
+         <a class="nav-link" href="#Prerequisites">Prerequisites</a>
+         <a href="#Status_Codes" class="nav-link">Status Codes</a>
+        <a href="#How_to_Start_Using_an_API_with_Python" class="nav-link">How to Start Using an API with Python</a>
+         <a href="#Endpoints" class="nav-link">Endpoints</a>
+        <a href="#Conclusion" class="nav-link">Conclusion</a>
+      </nav>
+    <main id="main-doc">
+      <section class="main-section" id="REST_API">
+        <header>REST API</header>
+        <h3><a href="#" class="nav-linked">What is API ?</a></h3>
+        <p>An API (Application Programming Interface) is a set of rules that are shared by a particular service. These rules determine in which format and with which command set your application can access the service, as well as what data this service can return in the response. The API acts as a layer between your application and external service. You do not need to know the internal structure and features of the service, you just send a certain simple command and receive data in a predetermined format.</p>
+        <h3>REST API</h3>
+        <p>REST API (Representational state transfer) is an API that uses HTTP requests for communication with web services.</p>
+      </section>
+        <section class="main-section" id="Constraints">
+          <header>Constraints</header>
+          <h5><a href="#" class="nav-linked">REST API</a> must comply with certain constraints. Here are some of them:</h5>
+          <ol>
+            <li><span>Client-server architecture – </span>the client is responsible for the user interface, and the server is responsible for the backend and data storage. Client and server are independent and each of them can be replaced.</li>
+            <li><span>Stateless –</span> no data from the client is stored on the server side. The session state is stored on the client side.</li>
+            <li><span>Cacheable –</span> clients can cache server responses to improve performance.</li></ol>
+       </section>
+        <section class="main-section" id="Types_of_Requests">
+          <header>Types of Requests</header>
+          <h5><a href="#" class="nav-linked">Types of Requests</a> or HTTP Request Methods characterize what action we are going to take by referring to the API.In total, there are four main types of actions:</h5>
+          <ul>
+            <li>GET: retrieve information (like search results). This is the most common type of request. Using it, we can get the data we are interested in from those that the API is ready to share.</li>
+            <li><span>POST:</span> adds new data to the server. Using this type of request, you can, for example, add a new item to your inventory.</li>
+            <li><span>PUT:</span> changes existing information. For example, using this type of request, it would be possible to change the color or value of an existing product.</li>
+            <li><span>DELETE:</span> deletes existing information</li>
+          </ul>
+       </section>
+        <section class="main-section" id="Prerequisites">
+          <header>Prerequisites</header>
+          <a href="#" class="nav-linked">A few.</a>
+          <p>In order to start working with the REST API through Python, you will need to connect a library to send HTTP requests.
+
+The choice of the library depends on the version of Python.
+
+If you use Python 2, we recommend using unirest because of its simplicity, speed, and ability to work with synchronous and asynchronous requests.
+
+If you work with Python 3, then we recommend stopping the choice on requests that is the de facto standard for making HTTP requests in Python.
+
+Further in our tutorial we will use Python 3.6 together with the requests library. That’s how the implementation of GET request will look using the requests:</p>
+          <pre><code>  import </code>requests
+     response=requests.<code>get</code>('https://google.com/')
+      <code>print</code>(response)
+      Response [200]</pre>
+          <p>Request returns а Response, a powerful object for inspecting the results of the request. Using Response, you can examine the headers and contents of the response, get a dictionary with data from JSON in the response, and also determine how successful our access to the server was by the response code from it.</p>
+       </section>
+        <section class="main-section" id="Status_Codes">
+          <header>Status Codes</header>
+          <h5><a href="#" class="nav-linked">Status codes</a> are returned with a response after each call to the server. They briefly describe the result of the call. There is a large number of status codes, we give those that you will most often meet:</h5>
+          <ul>
+            <li><span>200 – OK.</span> The request was successful. The answer itself depends on the method used (GET, POST, etc.) and the API specification.</li>
+            <li><span> 204 – No Content.</span> The server successfully processed the request and did not return any content.</li>
+            <li><span>301 – Moved Permanently.</span> The server responds that the requested page (endpoint) has been moved to another address and redirects to this address.</li>
+            <li><span>400 – Bad Request.</span> The server cannot process the request because the client-side errors (incorrect request format).</li>
+            <li><span>401 – Unauthorized.</span> Occurs when authentication was failed, due to incorrect credentials or even their absence.</li>
+            <li><span>403 – Forbidden. Access to the specified resource is denied.</span> The requested resource was not found on the server.</li>
+            <li><span>500 – Internal Server Error.</span> Occurs when an unknown error has occurred on the server.</li>
+          </ul>
+          <p>The request library has several useful properties for working with status codes. For example, you can simply view the status of the response code by accessing .status_code:</p>
+          <pre>
+          <code>print</code>(response.status_code)
+          200
+          </pre>
+          <p>That’s not all. You can use Response instance in a conditional expression. It will evaluate to True if the status code was between 200 and 400, and False otherwise.</p>
+          <pre>
+          if response:
+          <code>print</code>('Request is successful.')
+          <code>else:</code>
+          <code>print</code>('Request returned an error.')
+          </pre>
+       </section>
+       <section class="main-section" id="How_to_Start_Using_an_API_with_Python">
+        <header>How to Start Using an API with Python</header>
+         <a href="#" class="nav-linked">Getting Started..</a>
+         <p>
+           Having dealt with the nuances of working with API in Python, we can create a step-by-step guide:
+         </p>
+          <h5> 1. Get an API key</h5>
+<p>RapidAPI Sign Up
+An API Key is (usually) a unique string of letters and numbers. In order to start working with most APIs – you must register and get an API key. You will need to add an API key to each request so that the API can identify you. On the example of RapidAPI – you can choose the method of registration that will be convenient for you. This can be a username, email, and password: Google, Facebook, or Github account.</p><h5>2. Test API Endpoints with Python</h5>
+<p>NasaAPI Python RapidAPI
+Once we got the API key, we can refer to the API endpoints (according to the documentation) to check if everything is working as we expected. If we work with RapidAPI immediately after registering at the service, we can go to the section of needed API, subscribe to it if necessary, and test the answers of the endpoints we need directly on the API page. Next, we can generate a Python snippet that implements the functionality that we have just tested and quickly check it using IPython or simply insert it into our Python app.</p>
+<h5>3. Make your first Python app with API</h5>
+      </section>
+      <section class="main-section" id="Endpoints">
+        <header>
+          Endpoints
+          </header>
+          <h5>In order to work with REST APIs, it is important to understand what an<a href="#" class="nav-linked"> Endpoint</a> is.</h5>
+          <p>Usually, an Endpoint is a specific address (for example, https://weather-in-london.com/forecast), by referring to which you get access to certain features/data (in our case – the weather forecast for London). Commonly, the name (address) of the endpoint corresponds to the functionality it provides.</p>
+       </section>
+      <section class="main-section" id="Conclusion">
+        <header>
+         Conclusion
+          </header>
+        <a href="#" class="nav-linked">EndsWith()</a>
+        <p>
+          In this article, we started using the REST API in Python and consistently walked through all the necessary steps to create a Python application that uses almost limitless opportunities of APIs.
+        </p>
+    </main>
+  </body>
+</html>
